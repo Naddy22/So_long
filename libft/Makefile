@@ -14,23 +14,20 @@ get_next_line.c ft_printf_check_pourcent.c ft_printf_putchar.c ft_printf_putnbr_
 ft_printf_putnbr_unsigned.c ft_printf_putnbr.c ft_printf_putstr.c ft_printf.c
 
 # -- COLORS -- #
-Black='\033[0;30m'        # Black
-Red='\033[0;31m'          # Red
-Green=	\033[0;32m
-Yellow='\033[0;33m'       # Yellow
-Blue='\033[0;34m'         # Blue
-Purple='\033[0;35m'       # Purple
-Cyan='\033[0;36m'         # Cyan
-White= \033[0m        # White
+Black=\033[0;30m # Black
+Red=\033[0;31m # Red
+Green=\033[0;32m # Green
+Yellow=\033[0;33m # Yellow
+Blue=\033[0;34m # Blue
+Purple=\033[0;35m # Purple
+Cyan=\033[0;36m # Cyan
+White=\033[0m # White
 
-//_OBJ = $(SRC:.c=.o) #les .c sont lu en .o
+_OBJ = $(SRC:.c=.o) #les .c sont lu en .o
 SDIR = ./src/
-OBJ = $(addprefix $(BIN)/, $(notdir $(SRC:.c=.o)))
-# OBJ = $(addprefix $(BIN)/, $(SDIR), $(_OBJ))
+OBJ = $(addprefix $(BIN)/, $(notdir $(_OBJ)))
 $(BIN)/%.o: ./src/%.c libft.h # remplace les .c par .o avec -c . $< = dependance le plus a gauche
 	@$(CC) $(CFLAGS) -c $< -o $@
-# ./src/%.o: ./src/%.c libft.h # remplace les .c par .o avec -c . $< = dependance le plus a gauche
-# 	@$(CC) $(CFLAGS) -c $< -o $@
 all: $(NAME)
 $(NAME): $(BIN) $(OBJ) # $@ prends la target et $^ prends la dependance du dessus
 	@$(AR) $(NAME) $(OBJ)
@@ -38,9 +35,6 @@ $(NAME): $(BIN) $(OBJ) # $@ prends la target et $^ prends la dependance du dessu
 $(BIN):
 	@$(MK) $(BIN)
 .PHONY: all clean fclean re #.phony dit que ca se ne sont pas des fichiers
-
-MLX :
-
 clean:
 	@$(RM) $(BIN)
 	@echo "Libft object files deleted"

@@ -3,19 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nadege <nadege@student.42.fr>              +#+  +:+       +#+        */
+/*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 15:34:42 by namoisan          #+#    #+#             */
-/*   Updated: 2023/12/27 13:51:49 by nadege           ###   ########.fr       */
+/*   Updated: 2024/01/03 10:05:57 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "./libft/libft.h"
-# include "MLX42/include/MLX42/MLX42.h"
-# include "MLX42/include/MLX42/MLX42_Int.h"
+# include "../libft/libft.h"
+# include "../MLX42/include/MLX42/MLX42.h"
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
