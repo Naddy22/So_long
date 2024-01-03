@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 15:34:42 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/03 10:05:57 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/03 15:46:45 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,13 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
+# include <stdio.h>
 
 # define TRUE 1
 # define FALSE 0
-# define ERROR -1
+# define SUCCESS 0
+# define FAIL 1
+# define ERROR 2
 
 typedef struct s_game
 {
