@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 13:12:51 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/04 17:02:56 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/04 17:49:15 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,7 @@ int	map_is_rectangle(t_data *data)
 			return (FALSE);
 		h++;
 	}
-	if (h - 1 >= len)
-		return (FALSE);
 	data->game->width = len;
-	data->game->height = h - 1;
 	return (TRUE);
 }
 // pour verifier les characteres:
@@ -49,13 +46,17 @@ int	check_char(t_data *data)
 	int	w;
 
 	h = 0;
-	w = 0;
-	while (ft_strchr("01CEP", data->game->map[h][w]))
+	while (h < data->game->height)
 	{
-		while (ft_strchr("01CEP", data->game->map[h][w]))
+		w = 0;
+		while (w < data->game->width)
+		{
+			if (!ft_strchr("01CEP", data->game->map[h][w]))
+				return (FAIL);
 			w++;
+		}
 		h++;
 	}
-
+	return (SUCCESS);
 }
 // ensuite une pour voir si bien 1 seule E et P et minimum 1 C

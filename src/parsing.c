@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 14:27:19 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/04 14:16:48 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/04 17:36:09 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ void	get_height(char *file, t_data *data)
 
 	line = NULL;
 	fd = open(file, O_RDONLY);
-	// printf("avant: %d\n", data->game->height);
 	if (fd < 0)
 		printf("error file");
 	while (1)
@@ -53,12 +52,10 @@ void	get_height(char *file, t_data *data)
 		line = get_next_line(fd);
 		if (line == NULL)
 			break;
-		// printf("%s\n", line);
 		data->game->height++;
 		free(line);
 		line = NULL;
 	}
-	// printf("apres get next line: %d\n", data->game->height);
 	close(fd);
 }
 // malloc le nombre de ligne, rouvrir le fichier pour strdup chaque ligne dans **map, fermer fichier
