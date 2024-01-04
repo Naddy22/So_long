@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 14:27:19 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/04 13:36:31 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/04 14:16:48 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	init(t_game *game)
 {
 	game->width = 0;
 	game->height = 0;
+	game->player_h = 0;
+	game->player_w = 0;
 	game->moves = 0;
 	game->collectable = 0;
 }

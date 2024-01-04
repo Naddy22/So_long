@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 15:34:42 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/04 11:10:35 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/04 14:15:58 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ typedef struct s_game
 	char	**map;
 	int		width;
 	int		height;
+	int		player_w;
+	int		player_h;
 	int		moves;
 	int		collectable;
 }	t_game;

@@ -6,17 +6,17 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 13:12:51 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/03 14:29:05 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/04 17:02:56 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
 // .ber check
-// Mettre map dans char** map
+// Mettre map dans char** map check
 // forme rectangulaire check
 // mur tout autour sinon erreur check sauf erreur
-// 01 et C x1 minimum et PE juste x1 (mettre de côté la position et le nom d’item à collecter)(erreur si doublon), voir pour les vilains apres
+// 01 et C x1 minimum et PE juste x1 (mettre de côté la position et le nbr d’item à collecter)(erreur si doublon), voir pour les vilains apres
 // verifier si chemin valide (flood fill)
 //Si une erreur de configuration est détectée, le programme doit quitter proprement
 // et retourner "Error\n" suivi d’un message d’erreur explicite de votre choix.
@@ -41,3 +41,21 @@ int	map_is_rectangle(t_data *data)
 	data->game->height = h - 1;
 	return (TRUE);
 }
+// pour verifier les characteres:
+// faire une fonction pour verifier que tous les caracteres soit bien entre 01CEP et V plus tard
+int	check_char(t_data *data)
+{
+	int	h;
+	int	w;
+
+	h = 0;
+	w = 0;
+	while (ft_strchr("01CEP", data->game->map[h][w]))
+	{
+		while (ft_strchr("01CEP", data->game->map[h][w]))
+			w++;
+		h++;
+	}
+
+}
+// ensuite une pour voir si bien 1 seule E et P et minimum 1 C
