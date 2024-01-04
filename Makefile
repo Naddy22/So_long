@@ -1,6 +1,6 @@
 NAME = So_long
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 MY_LIB = ./libft/libft.a
 MY_LIBDIR = ./libft/
@@ -15,7 +15,7 @@ DEPS = ./inc/so_long.h
 MK = mkdir -p
 RM = rm -rf
 BIN = bin
-SRC = main.c
+SRC = main.c parsing.c
 SDIR = ./src/
 
 # -- COLORS -- #

@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 14:54:26 by namoisan          #+#    #+#             */
-/*   Updated: 2023/12/19 11:08:47 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/04 13:34:02 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char	*ft_strjoin_dup(char *s1, char const *s2)
 		return (NULL);
 	}
 	ft_bzero(result, size);
-	ft_strlcpy(result, s1, ft_strlen(s1) + 1);
+	ft_strlcpy_gnl(result, s1, ft_strlen(s1) + 1);
 	ft_strlcat(result, s2, size);
 	if (s1)
 		free(s1);
@@ -87,7 +87,7 @@ char	*fill_buffer(char *buf, int fd)
 	{
 		ft_bzero(tmp, BUFFER_SIZE + 1);
 		read_bytes = read(fd, tmp, BUFFER_SIZE);
-		buf = ft_strjoin(buf, tmp);
+		buf = ft_strjoin_dup(buf, tmp);
 		if (buf == NULL)
 			return (NULL);
 	}
@@ -121,7 +121,7 @@ char	*get_next_line(int fd)
 		buf = NULL;
 		return (NULL);
 	}
-	ft_strlcpy(line, buf, i);
+	ft_strlcpy_gnl(line, buf, i);
 	buf = delete_buf_line(buf);
 	return (line);
 }
