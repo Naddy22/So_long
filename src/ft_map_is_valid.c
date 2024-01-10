@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 13:12:51 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/04 17:49:15 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/10 10:07:00 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ int	map_is_rectangle(t_data *data)
 	return (TRUE);
 }
 // pour verifier les characteres:
-// faire une fonction pour verifier que tous les caracteres soit bien entre 01CEP et V plus tard
-int	check_char(t_data *data)
+// faire une fonction pour verifier que tous les caracteres sont bien entre 01CEP et V plus tard
+int	check_chars(t_data *data)
 {
 	int	h;
 	int	w;
@@ -60,3 +60,34 @@ int	check_char(t_data *data)
 	return (SUCCESS);
 }
 // ensuite une pour voir si bien 1 seule E et P et minimum 1 C
+int	check_max_char(t_data *data)
+{
+	int h;
+	int w;
+	int e;
+	int p;
+
+	h = 0;
+	while (h < data->game->height)
+	{
+		w = 0;
+		while (w < data->game->width)
+		{
+			if (ft_strchr("E", data->game->map[h][w]))
+				e++;
+			if (ft_strchr("P", data->game->map[h][w]))
+			{
+				data->game->player_h = h;
+				data->game->player_w = w;
+				p++;
+			}
+			if (ft_strchr("C", data->game->map[h][w]))
+				data->game->collectable++;
+			w++;
+		}
+		h++;
+	}
+	if (e != 1 || p != 1 || data->game->collectable < 1)
+		return (FAIL);
+	return (SUCCESS);
+}
