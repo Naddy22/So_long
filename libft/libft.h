@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 13:12:41 by namoisan          #+#    #+#             */
-/*   Updated: 2023/12/19 11:10:35 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/10 11:25:16 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,7 @@ size_t	ft_strlcpy_gnl(char *dst, const char *src, size_t dstsize);
 char	*ft_strjoin_dup(char *s1, const char *s2);
 char	*delete_buf_line(char *buf);
 char	*fill_buffer(char *buf, int fd);
+
+//autre ajout perso
+void	ft_free_table(char **table);
 #endif

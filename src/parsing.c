@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 14:27:19 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/10 10:46:32 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/10 15:01:46 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	check_file_name(char *file)
 		if (ft_strncmp(".ber", tmp, 5) == 0)
 			return (TRUE);
 	}
-	return (FALSE);
+	return (FAIL);
 }
 
 void	init(t_game *game)
@@ -34,6 +34,10 @@ void	init(t_game *game)
 	game->player_w = 0;
 	game->moves = 0;
 	game->collectable = 0;
+	game->h = 0;
+	game->w = 0;
+	game->exit_counter = 0;
+	game->p = 0;
 }
 
 // lire map:
@@ -46,7 +50,7 @@ void	get_height(char *file, t_data *data)
 	line = NULL;
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
-		printf("error file");
+		puterror("File opening\n");
 	while (1)
 	{
 		line = get_next_line(fd);
@@ -69,8 +73,10 @@ void	get_map(char *file, t_data *data)
 	h = 0;
 	data->game.map = malloc((data->game.height + 1 * sizeof(char *)));
 	if (data->game.map == NULL)
-		printf("error malloc");
+		puterror_free("Memory allocation\n", data->game.map);
 	fd = open(file, O_RDONLY);
+	if (fd < 0)
+		puterror("File opening\n");
 	while(1)
 	{
 		line = get_next_line(fd);
@@ -92,6 +98,10 @@ void	parsing(char *file, t_data *data)
 	{
 		init(&data->game);
 		get_height(file, data);
+		if (data->game.height == 0)
+			puterror("The map is empty\n");
 		get_map(file, data);
 	}
+	else
+		puterror("Invalid file\n");
 }

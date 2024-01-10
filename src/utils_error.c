@@ -1,36 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/19 11:23:28 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/10 10:53:40 by namoisan         ###   ########.fr       */
+/*   Created: 2024/01/10 11:17:09 by namoisan          #+#    #+#             */
+/*   Updated: 2024/01/10 14:49:08 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
-#include <stdio.h>
-#include <ctype.h>
-#include <string.h>
-#include <stdlib.h>
 
-int	main(int argc, char **argv)
+void	puterror_free(char *error, t_data *data)
 {
-	t_data	data;
-	int	h;
+	ft_free_table(&data->game.map);
+	ft_putstr_fd("Error\n", 2);
+	ft_putstr_fd(error, 2);
+	exit(1);
+}
 
-	h = 0;
-
-	if (argc == 2)
-	{
-		parsing(argv[1], &data);
-	}
-	while (h < data.game.height)
-	{
-		printf("%s", data.game.map[h]);
-		h++;
-	}
-	return (0);
+void	puterror(char *error)
+{
+	ft_putstr_fd("Error\n", 2);
+	ft_putstr_fd(error, 2);
+	exit(1);
 }

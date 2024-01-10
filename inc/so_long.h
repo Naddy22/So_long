@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 15:34:42 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/10 10:42:12 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/10 16:47:15 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,23 @@
 # include <fcntl.h>
 # include <stdio.h>
 
+//define de base
 # define TRUE 1
 # define FALSE 0
 # define SUCCESS 0
 # define FAIL 1
 # define ERROR 2
 
+//Error
+# define VALID 0
+# define INVALID_RECTANGLE 3
+# define INVALID_CHARS 4
+# define EXIT_ERROR 5
+# define PLAYER_ERROR 6
+# define COLLECTABLE_ERROR 7
+# define INVALID_WALL 8
+
+//structure
 typedef struct s_game
 {
 	char	**map;
@@ -35,6 +46,10 @@ typedef struct s_game
 	int		player_h;
 	int		moves;
 	int		collectable;
+	int		h;
+	int		w;
+	int		p;
+	int		exit_counter;
 }	t_game;
 
 typedef struct s_data
@@ -42,9 +57,17 @@ typedef struct s_data
 	t_game	game;
 }	t_data;
 
-int	check_file_name(char *file);
+//parsing
+int		check_file_name(char *file);
 void	get_height(char *file, t_data *data);
 void	get_map(char *file, t_data *data);
 void	parsing(char *file, t_data *data);
+void	init(t_game *game);
 
+//utils error
+void	puterror_free(char *error, t_data *data);
+void	puterror(char *error);
+
+//map et wall is valid
+int	ft_wall_is_valid(t_data *data);
 #endif

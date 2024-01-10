@@ -6,23 +6,26 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 10:26:08 by namoisan          #+#    #+#             */
-/*   Updated: 2023/12/19 11:07:54 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/10 14:03:20 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-static void	ft_free_table(char **table)
+void	ft_free_table(char **table)
 {
 	int	i;
 
 	i = 0;
-	while (table[i])
+	if (table)
 	{
-		free(table[i]);
-		i++;
+		while (table[i])
+		{
+			free(table[i]);
+			i++;
+		}
+		free(table);
 	}
-	free(table);
 }
 
 static int	count_words(const char *s, char c)

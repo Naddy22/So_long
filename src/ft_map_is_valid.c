@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 13:12:51 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/10 10:07:00 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/10 16:52:19 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,73 +21,95 @@
 //Si une erreur de configuration est détectée, le programme doit quitter proprement
 // et retourner "Error\n" suivi d’un message d’erreur explicite de votre choix.
 
-int	map_is_rectangle(t_data *data)
+static int	map_is_rectangle(t_data *data)
 {
-	int	h;
 	int	len;
 
-	h = 0;
-	len = ft_strlen(data->game->map[h]);
-	h++;
-	while (data->game->map[h] != '\0')
+	data->game.h = 0;
+	len = ft_strlen(data->game.map[data->game.h]);
+	data->game.h++;
+	while (data->game.map[data->game.h] < data->game.height)
 	{
-		if (ft_strlen(data->game->map[h]) != len)
+		if (ft_strlen(data->game.map[data->game.h]) != len)
 			return (FALSE);
-		h++;
+		data->game.h++;
 	}
-	data->game->width = len;
+	data->game.width = len;
 	return (TRUE);
 }
 // pour verifier les characteres:
 // faire une fonction pour verifier que tous les caracteres sont bien entre 01CEP et V plus tard
-int	check_chars(t_data *data)
+static int	check_chars(t_data *data)
 {
-	int	h;
-	int	w;
-
-	h = 0;
-	while (h < data->game->height)
+	data->game.h = 0;
+	while (data->game.h < data->game.height)
 	{
-		w = 0;
-		while (w < data->game->width)
+		data->game.w = 0;
+		while (data->game.w < data->game.width)
 		{
-			if (!ft_strchr("01CEP", data->game->map[h][w]))
+			if (!ft_strchr("01CEP", data->game.map[data->game.h][data->game.w]))
 				return (FAIL);
-			w++;
+			data->game.w++;
 		}
-		h++;
+		data->game.h++;
 	}
 	return (SUCCESS);
 }
 // ensuite une pour voir si bien 1 seule E et P et minimum 1 C
-int	check_max_char(t_data *data)
+static int	check_max_char(t_data *data)
 {
-	int h;
-	int w;
-	int e;
-	int p;
-
-	h = 0;
-	while (h < data->game->height)
+	data->game.h = 0;
+	while (data->game.h < data->game.height)
 	{
-		w = 0;
-		while (w < data->game->width)
+		data->game.w = 0;
+		while (data->game.w < data->game.width)
 		{
-			if (ft_strchr("E", data->game->map[h][w]))
-				e++;
-			if (ft_strchr("P", data->game->map[h][w]))
+			if (ft_strchr("E", data->game.map[data->game.h][data->game.w]))
+				data->game.exit_counter++;
+			if (ft_strchr("P", data->game.map[data->game.h][data->game.w]))
 			{
-				data->game->player_h = h;
-				data->game->player_w = w;
-				p++;
+				data->game.player_h = data->game.h;
+				data->game.player_w = data->game.w;
+				data->game.p++;
 			}
-			if (ft_strchr("C", data->game->map[h][w]))
-				data->game->collectable++;
-			w++;
+			if (ft_strchr("C", data->game.map[data->game.h][data->game.w]))
+				data->game.collectable++;
+			data->game.w++;
 		}
-		h++;
+		data->game.h++;
 	}
-	if (e != 1 || p != 1 || data->game->collectable < 1)
+	if (data->game.exit_counter != 1 || data->game.p != 1 || data->game.collectable < 1)
 		return (FAIL);
 	return (SUCCESS);
 }
+
+static int	get_error_char(t_data *data)
+{
+	if (data->game.exit_counter != 1)
+		return (EXIT_ERROR);
+	if (data->game.p != 1);
+		return (PLAYER_ERROR);
+	if (data->game.collectable < 1)
+		return (COLLECTABLE_ERROR);
+	return (0);
+}
+
+int	map_is_valid(t_data *data)
+{
+	int	error;
+
+	if (map_is_rectangle(data) != TRUE)
+		return (INVALID_RECTANGLE);
+	if (ft_wall_is_valid(data) == TRUE)
+		return (INVALID_WALL);
+	if(check_chars(data) != SUCCESS)
+		return (INVALID_CHARS);
+	if (check_max_char != SUCCESS)
+	{
+		error = get_error_char(data);
+		return (error);
+	}
+	return (VALID);
+}
+//next step: voir pour afficher les erreurs et voir pour que le parsing
+// prenne map is valid en compte avant la suite
