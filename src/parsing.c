@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 14:27:19 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/04 17:36:09 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/10 10:46:32 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	get_height(char *file, t_data *data)
 		line = get_next_line(fd);
 		if (line == NULL)
 			break;
-		data->game->height++;
+		data->game.height++;
 		free(line);
 		line = NULL;
 	}
@@ -67,8 +67,8 @@ void	get_map(char *file, t_data *data)
 
 	line = NULL;
 	h = 0;
-	data->game->map = malloc((data->game->height + 1 * sizeof(char *)));
-	if (data->game->map == NULL)
+	data->game.map = malloc((data->game.height + 1 * sizeof(char *)));
+	if (data->game.map == NULL)
 		printf("error malloc");
 	fd = open(file, O_RDONLY);
 	while(1)
@@ -76,7 +76,7 @@ void	get_map(char *file, t_data *data)
 		line = get_next_line(fd);
 		if (line == NULL)
 			break;
-		data->game->map[h] = ft_strdup(line);
+		data->game.map[h] = ft_strdup(line);
 		h++;
 		free(line);
 		line = NULL;
@@ -90,7 +90,7 @@ void	parsing(char *file, t_data *data)
 {
 	if(check_file_name(file) == TRUE)
 	{
-		init(data->game);
+		init(&data->game);
 		get_height(file, data);
 		get_map(file, data);
 	}

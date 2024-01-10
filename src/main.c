@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 11:23:28 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/04 13:37:04 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/10 10:49:06 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,11 @@ int	main(int argc, char **argv)
 
 	if (argc == 2)
 	{
-		ft_bzero(&data, sizeof(t_data));
-		data.game = malloc(sizeof(t_game));
-		if (data.game == NULL)
-			printf("error malloc data.game");
 		parsing(argv[1], &data);
 	}
-	while (h < data.game->height)
+	while (h < data.game.height)
 	{
-		printf("%s", data.game->map[h]);
+		printf("%s", data.game.map[h]);
 		h++;
 	}
 	return (0);

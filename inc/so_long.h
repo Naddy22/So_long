@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 15:34:42 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/04 14:15:58 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/10 10:42:12 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct s_game
 
 typedef struct s_data
 {
-	t_game	*game;
+	t_game	game;
 }	t_data;
 
 int	check_file_name(char *file);
