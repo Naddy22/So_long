@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 15:34:42 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/10 16:47:15 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/11 15:42:03 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,9 @@ void	init(t_game *game);
 //utils error
 void	puterror_free(char *error, t_data *data);
 void	puterror(char *error);
+void	show_error(int error, t_data *data);
 
 //map et wall is valid
 int	ft_wall_is_valid(t_data *data);
+int	map_is_valid(t_data *data);
 #endif

@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 13:12:51 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/10 16:52:19 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/11 15:52:41 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 // .ber check
 // Mettre map dans char** map check
 // forme rectangulaire check
-// mur tout autour sinon erreur check sauf erreur
+// mur tout autour sinon erreur check
 // 01 et C x1 minimum et PE juste x1 (mettre de côté la position et le nbr d’item à collecter)(erreur si doublon), voir pour les vilains apres
 // verifier si chemin valide (flood fill)
 //Si une erreur de configuration est détectée, le programme doit quitter proprement
@@ -23,18 +23,18 @@
 
 static int	map_is_rectangle(t_data *data)
 {
-	int	len;
+	size_t	len;
 
 	data->game.h = 0;
-	len = ft_strlen(data->game.map[data->game.h]);
+	len = ft_strlen(data->game.map[data->game.h]) - 1;
 	data->game.h++;
-	while (data->game.map[data->game.h] < data->game.height)
+	while (data->game.h < data->game.height)
 	{
-		if (ft_strlen(data->game.map[data->game.h]) != len)
+		if ((ft_strlen(data->game.map[data->game.h]) - 1) != len)
 			return (FALSE);
 		data->game.h++;
 	}
-	data->game.width = len;
+	data->game.width = (int)len;
 	return (TRUE);
 }
 // pour verifier les characteres:
@@ -87,7 +87,7 @@ static int	get_error_char(t_data *data)
 {
 	if (data->game.exit_counter != 1)
 		return (EXIT_ERROR);
-	if (data->game.p != 1);
+	if (data->game.p != 1)
 		return (PLAYER_ERROR);
 	if (data->game.collectable < 1)
 		return (COLLECTABLE_ERROR);
@@ -98,18 +98,17 @@ int	map_is_valid(t_data *data)
 {
 	int	error;
 
+	error = 0;
 	if (map_is_rectangle(data) != TRUE)
 		return (INVALID_RECTANGLE);
-	if (ft_wall_is_valid(data) == TRUE)
+	else if (ft_wall_is_valid(data) != TRUE)
 		return (INVALID_WALL);
-	if(check_chars(data) != SUCCESS)
+	else if (check_chars(data) != SUCCESS)
 		return (INVALID_CHARS);
-	if (check_max_char != SUCCESS)
+	else if (check_max_char(data) != SUCCESS)
 	{
 		error = get_error_char(data);
 		return (error);
 	}
 	return (VALID);
 }
-//next step: voir pour afficher les erreurs et voir pour que le parsing
-// prenne map is valid en compte avant la suite

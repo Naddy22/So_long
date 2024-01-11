@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 14:27:19 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/10 15:01:46 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/11 16:36:27 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ int	check_file_name(char *file)
 	char	*tmp;
 
 	tmp = NULL;
-	if (ft_strchr(file, '.'))
+	if (ft_strrchr(file, '.'))
 	{
-		tmp = ft_strchr(file, '.');
+		tmp = ft_strrchr(file, '.');
 		if (ft_strncmp(".ber", tmp, 5) == 0)
 			return (TRUE);
 	}
-	return (FAIL);
+	return (FALSE);
 }
 
 void	init(t_game *game)
@@ -60,6 +60,7 @@ void	get_height(char *file, t_data *data)
 		free(line);
 		line = NULL;
 	}
+	// printf("%d\n", data->game.height);
 	close(fd);
 }
 // malloc le nombre de ligne, rouvrir le fichier pour strdup chaque ligne dans **map, fermer fichier
@@ -71,9 +72,9 @@ void	get_map(char *file, t_data *data)
 
 	line = NULL;
 	h = 0;
-	data->game.map = malloc((data->game.height + 1 * sizeof(char *)));
+	data->game.map = malloc((data->game.height + 1) * sizeof(char *));
 	if (data->game.map == NULL)
-		puterror_free("Memory allocation\n", data->game.map);
+		puterror_free("Memory allocation\n", data);
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		puterror("File opening\n");
@@ -94,13 +95,19 @@ void	get_map(char *file, t_data *data)
 // dans un int pour derriere renvoyer la bonne erreur)
 void	parsing(char *file, t_data *data)
 {
-	if(check_file_name(file) == TRUE)
+	int error;
+
+	error = 0;
+	if (check_file_name(file) == TRUE)
 	{
 		init(&data->game);
 		get_height(file, data);
 		if (data->game.height == 0)
 			puterror("The map is empty\n");
 		get_map(file, data);
+		error = map_is_valid(data);
+		if (error > 0)
+			show_error(error, data);
 	}
 	else
 		puterror("Invalid file\n");

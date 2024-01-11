@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 15:08:51 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/10 11:51:44 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/11 15:52:24 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ int	ft_wall_is_valid(t_data *data)
 	height = data->game.height;
 	while (h < height)
 	{
-		if (data->game.map[h][0] != 1 || data->game.map[h][width - 1] != 1)
+		if (data->game.map[h][0] != '1' || data->game.map[h][width - 1] != '1')
 			return (FALSE);
 		h++;
 	}
 	while (w < width)
 	{
-		if (data->game.map[0][w] != 1 || data->game.map[height - 1][w] != 1)
+		if (data->game.map[0][w] != '1' || data->game.map[height - 1][w] != '1')
 			return (FALSE);
 		w++;
 	}
