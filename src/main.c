@@ -6,23 +6,22 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 11:23:28 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/11 16:21:31 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/12 11:59:54 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
-#include <stdio.h>
 #include <ctype.h>
-#include <string.h>
+#include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 int	main(int argc, char **argv)
 {
 	t_data	data;
-	int	h;
+	int		h;
 
 	h = 0;
-
 	if (argc == 2)
 	{
 		parsing(argv[1], &data);

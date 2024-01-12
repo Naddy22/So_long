@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 15:34:42 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/11 15:42:03 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/12 12:14:49 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,14 @@
 typedef struct s_game
 {
 	char	**map;
+	char	**copy_map;
 	int		width;
 	int		height;
 	int		player_w;
 	int		player_h;
 	int		moves;
 	int		collectable;
+	int		collected;
 	int		h;
 	int		w;
 	int		p;
@@ -72,4 +74,7 @@ void	show_error(int error, t_data *data);
 //map et wall is valid
 int	ft_wall_is_valid(t_data *data);
 int	map_is_valid(t_data *data);
+
+//floodfill
+int	path_is_valid(t_data *data);
 #endif

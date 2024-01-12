@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 14:27:19 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/11 16:36:27 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/12 12:19:39 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	init(t_game *game)
 	game->player_w = 0;
 	game->moves = 0;
 	game->collectable = 0;
+	game->collected = 0;
 	game->h = 0;
 	game->w = 0;
 	game->exit_counter = 0;
@@ -41,11 +42,12 @@ void	init(t_game *game)
 }
 
 // lire map:
-// ouvrir fichier et recuperer le nombre de ligne avec get next line, free et fermer fichier
+// ouvrir fichier et recuperer le nombre de ligne avec get next line,
+//free et fermer fichier
 void	get_height(char *file, t_data *data)
 {
-	int fd;
-	char *line;
+	int		fd;
+	char	*line;
 
 	line = NULL;
 	fd = open(file, O_RDONLY);
@@ -55,7 +57,7 @@ void	get_height(char *file, t_data *data)
 	{
 		line = get_next_line(fd);
 		if (line == NULL)
-			break;
+			break ;
 		data->game.height++;
 		free(line);
 		line = NULL;
@@ -63,7 +65,8 @@ void	get_height(char *file, t_data *data)
 	// printf("%d\n", data->game.height);
 	close(fd);
 }
-// malloc le nombre de ligne, rouvrir le fichier pour strdup chaque ligne dans **map, fermer fichier
+// malloc le nombre de ligne,
+//rouvrir le fichier pour strdup chaque ligne dans **map, fermer fichier
 void	get_map(char *file, t_data *data)
 {
 	int		fd;
@@ -78,11 +81,11 @@ void	get_map(char *file, t_data *data)
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		puterror("File opening\n");
-	while(1)
+	while (1)
 	{
 		line = get_next_line(fd);
 		if (line == NULL)
-			break;
+			break ;
 		data->game.map[h] = ft_strdup(line);
 		h++;
 		free(line);
@@ -91,11 +94,12 @@ void	get_map(char *file, t_data *data)
 	close(fd);
 }
 
-// parsing va verifier si bon fichier, appeler les fonction, voir pour les erreur (peut être stocker
+// parsing va verifier si bon fichier, appeler les fonction,
+//voir pour les erreur (peut être stocker
 // dans un int pour derriere renvoyer la bonne erreur)
 void	parsing(char *file, t_data *data)
 {
-	int error;
+	int	error;
 
 	error = 0;
 	if (check_file_name(file) == TRUE)
@@ -108,6 +112,8 @@ void	parsing(char *file, t_data *data)
 		error = map_is_valid(data);
 		if (error > 0)
 			show_error(error, data);
+		if (path_is_valid(data) != TRUE)
+			puterror_free("Path is not valid", data);
 	}
 	else
 		puterror("Invalid file\n");

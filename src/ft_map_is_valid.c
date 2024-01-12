@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 13:12:51 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/11 15:52:41 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/12 12:00:16 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@
 // Mettre map dans char** map check
 // forme rectangulaire check
 // mur tout autour sinon erreur check
-// 01 et C x1 minimum et PE juste x1 (mettre de côté la position et le nbr d’item à collecter)(erreur si doublon), voir pour les vilains apres
+// 01 et C x1 minimum et PE juste x1 (mettre de côté la position et le nbr d’item à collecter)(erreur si doublon),
+//voir pour les vilains apres
 // verifier si chemin valide (flood fill)
-//Si une erreur de configuration est détectée, le programme doit quitter proprement
+// Si une erreur de configuration est détectée,
+//le programme doit quitter proprement
 // et retourner "Error\n" suivi d’un message d’erreur explicite de votre choix.
 
 static int	map_is_rectangle(t_data *data)
@@ -78,7 +80,8 @@ static int	check_max_char(t_data *data)
 		}
 		data->game.h++;
 	}
-	if (data->game.exit_counter != 1 || data->game.p != 1 || data->game.collectable < 1)
+	if (data->game.exit_counter != 1 || data->game.p != 1
+		|| data->game.collectable < 1)
 		return (FAIL);
 	return (SUCCESS);
 }
