@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 14:27:19 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/12 12:19:39 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/17 12:56:55 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ void	parsing(char *file, t_data *data)
 		if (error > 0)
 			show_error(error, data);
 		if (path_is_valid(data) != TRUE)
-			puterror_free("Path is not valid", data);
+			puterror("Path is invalid\n");
 	}
 	else
 		puterror("Invalid file\n");

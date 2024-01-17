@@ -1,6 +1,6 @@
 NAME = So_long
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g #-fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 
 MY_LIB = ./libft/libft.a
 MY_LIBDIR = ./libft/
@@ -15,7 +15,7 @@ DEPS = ./inc/so_long.h
 MK = mkdir -p
 RM = rm -rf
 BIN = bin
-SRC = main.c parsing.c ft_map_is_valid.c ft_wall_is_valid.c utils_error.c
+SRC = main.c parsing.c ft_map_is_valid.c ft_wall_is_valid.c utils_error.c floodfill.c
 SDIR = ./src/
 
 # -- COLORS -- #
