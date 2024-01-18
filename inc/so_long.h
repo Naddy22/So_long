@@ -6,28 +6,28 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 15:34:42 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/12 12:14:49 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/18 16:36:31 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "../libft/libft.h"
 # include "../MLX42/include/MLX42/MLX42.h"
-# include <unistd.h>
-# include <stdlib.h>
+# include "../libft/libft.h"
 # include <fcntl.h>
 # include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
 
-//define de base
+// define de base
 # define TRUE 1
 # define FALSE 0
 # define SUCCESS 0
 # define FAIL 1
 # define ERROR 2
 
-//Error
+// Error
 # define VALID 0
 # define INVALID_RECTANGLE 3
 # define INVALID_CHARS 4
@@ -36,7 +36,22 @@
 # define COLLECTABLE_ERROR 7
 # define INVALID_WALL 8
 
-//structure
+// Image
+# define IMG_SIZE 48
+
+# define FLOOR_TOP_L "image/floor/floortopleft.png"
+# define FLOOR_TOP_M "image/floor/floortopmiddle.png"
+# define FLOOR_TOP_R "image/floor/floortopright.png"
+# define FLOOR_MIDDLE_L "image/floor/floormiddleleft.png"
+# define FLOOR_MIDDLE_M "image/floor/floormiddlemiddle.png"
+# define FLOOR_MIDDLE_R "image/floor/floormiddleright.png"
+# define FLOOR_DOWN_L "image/floor/floordownleft.png"
+# define FLOOR_DOWN_M "image/floor/floordownmiddle.png"
+# define FLOOR_DOWN_R "image/floor/floordownright.png"
+
+# define WALL "image/wall/wall.png"
+
+// structure
 typedef struct s_game
 {
 	char	**map;
@@ -52,29 +67,39 @@ typedef struct s_game
 	int		w;
 	int		p;
 	int		exit_counter;
-}	t_game;
+}			t_game;
 
 typedef struct s_data
 {
 	t_game	game;
-}	t_data;
+	void	*mlx_win;
+	void	*mlx_texture;
+	void	*mlx_img;
+}			t_data;
 
-//parsing
-int		check_file_name(char *file);
-void	get_height(char *file, t_data *data);
-void	get_map(char *file, t_data *data);
-void	parsing(char *file, t_data *data);
-void	init(t_game *game);
+// parsing
+int			check_file_name(char *file);
+void		get_height(char *file, t_data *data);
+void		get_map(char *file, t_data *data);
+void		parsing(char *file, t_data *data);
+void		init(t_game *game);
 
-//utils error
-void	puterror_free(char *error, t_data *data);
-void	puterror(char *error);
-void	show_error(int error, t_data *data);
+// utils error
+void		puterror_free(char *error, t_data *data);
+void		puterror(char *error);
+void		show_error(int error, t_data *data);
 
-//map et wall is valid
-int	ft_wall_is_valid(t_data *data);
-int	map_is_valid(t_data *data);
+// map et wall is valid
+int			ft_wall_is_valid(t_data *data);
+int			map_is_valid(t_data *data);
 
-//floodfill
-int	path_is_valid(t_data *data);
+// floodfill
+int			path_is_valid(t_data *data);
+
+//mlx
+void mlx(t_data *data);
+
+//display_img
+void display_image(t_data *data);
+
 #endif

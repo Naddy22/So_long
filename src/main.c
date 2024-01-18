@@ -6,15 +6,11 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 11:23:28 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/17 15:15:46 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/18 15:56:22 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
-#include <ctype.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
 int	main(int argc, char **argv)
 {
@@ -25,9 +21,10 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 	{
 		parsing(argv[1], &data);
+		mlx(&data);
 	}
 	else
-		putteror("The number of arguments must be equal to 1");
+		puterror("The number of arguments must be equal to 1");
 	// while (h < data.game.height)
 	// {
 	// 	printf("%s", data.game.map[h]);
