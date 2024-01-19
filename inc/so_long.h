@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 15:34:42 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/18 16:36:31 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/19 13:28:33 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,11 @@
 # define FLOOR_DOWN_M "image/floor/floordownmiddle.png"
 # define FLOOR_DOWN_R "image/floor/floordownright.png"
 
-# define WALL "image/wall/wall.png"
+# define WALL "image/wall/brush_wall.png"
+
+# define COLLECTABLE "image/collectable/collectable2.png"
+
+# define EXIT "image/exit/exit.png"
 
 // structure
 typedef struct s_game
@@ -71,11 +75,11 @@ typedef struct s_game
 
 typedef struct s_data
 {
-	t_game	game;
-	void	*mlx_win;
-	void	*mlx_texture;
-	void	*mlx_img;
-}			t_data;
+	t_game			game;
+	mlx_t			*mlx_win;
+	mlx_texture_t	*mlx_texture;
+	mlx_image_t		*mlx_img;
+}					t_data;
 
 // parsing
 int			check_file_name(char *file);

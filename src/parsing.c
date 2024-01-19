@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 14:27:19 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/17 12:56:55 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/19 10:49:55 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ void	parsing(char *file, t_data *data)
 	int	error;
 
 	error = 0;
+	ft_bzero(data, sizeof(t_data));
 	if (check_file_name(file) == TRUE)
 	{
 		init(&data->game);
