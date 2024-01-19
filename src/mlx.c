@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 09:19:04 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/19 10:58:55 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/19 16:02:39 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@
 // remettre les données du player à jours et rajouter un mouvement fait puis l'imprimer
 // dans le terminal(voir pour fonction appart).
 // hook, puis loop
+void	player_key(mlx_key_data_t keydata, void *param)
+{
+
+}
 
 void mlx(t_data *data)
 {
@@ -36,6 +40,7 @@ void mlx(t_data *data)
 	if (data->mlx_win == NULL)
 		puterror_free("MLX init", data);
 	display_image(data);
+	mlx_key_hook(data->mlx_win, , data);
 	// mlx_loop_hook(data->mlx_win, ft_exit, data);
 	mlx_loop(data->mlx_win);
 	// delete texture et image

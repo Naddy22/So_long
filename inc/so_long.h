@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 15:34:42 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/19 13:28:33 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/19 14:31:20 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,14 @@
 
 # define WALL "image/wall/brush_wall.png"
 
-# define COLLECTABLE "image/collectable/collectable2.png"
+# define COLLECTABLE "image/collectable/collectable.png"
 
 # define EXIT "image/exit/exit.png"
+
+#define PLAYER_FACE "image/player/playerface.png"
+#define PLAYER_BACK "image/player/playerback.png"
+#define PLAYER_RIGHT "image/player/playerright.png"
+#define PLAYER_LEFT "image/player/playerleft.png"
 
 // structure
 typedef struct s_game

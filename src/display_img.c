@@ -6,16 +6,14 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 09:48:51 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/19 12:10:45 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/19 15:18:11 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
 // display image
-// 2 put img en utilisant mlx_load_xpm42 tout en le stockant dans *xpm et mlx
-// texture to image dams mlx image
-// (ou mlx load png dans mlx texture et mlx texture to image dams mlx image)
+// 2 mlx load png dans mlx texture et mlx texture to image dams mlx image
 // verifier si pas null apres. mlx image to window
 // mlx delete image
 // 1 put background mettre le sol partout sur la map
@@ -49,6 +47,8 @@ static void	put_object(t_data *data)
 				put_image(COLLECTABLE, data, h, w);
 			if (data->game.map[h][w] == 'E')
 				put_image(EXIT, data, h, w);
+			// if (data->game.map[h][w] == 'P')
+			// 	put_image(PLAYER_FACE, data, h, w);
 			w++;
 		}
 		h++;
