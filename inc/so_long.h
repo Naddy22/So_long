@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 15:34:42 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/19 14:31:20 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/20 16:24:32 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,8 +107,10 @@ int			path_is_valid(t_data *data);
 
 //mlx
 void mlx(t_data *data);
+void	player_key(mlx_key_data_t keydata, void *param);
 
 //display_img
 void display_image(t_data *data);
+void	put_image(const char *img, t_data *data, int h, int w);
 
 #endif

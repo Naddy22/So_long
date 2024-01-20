@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 09:48:51 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/19 15:18:11 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/20 16:29:29 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 // 1 put background mettre le sol partout sur la map
 // 2 put object pour put img pour chaque lettre differente (player en position P etc..)
 
-static void	put_image(const char *img, t_data *data, int h, int w)
+void	put_image(const char *img, t_data *data, int h, int w)
 {
 	data->mlx_texture = mlx_load_png(img);
 	if (data->mlx_texture == NULL)
@@ -47,8 +47,8 @@ static void	put_object(t_data *data)
 				put_image(COLLECTABLE, data, h, w);
 			if (data->game.map[h][w] == 'E')
 				put_image(EXIT, data, h, w);
-			// if (data->game.map[h][w] == 'P')
-			// 	put_image(PLAYER_FACE, data, h, w);
+			if (data->game.map[h][w] == 'P')
+				put_image(PLAYER_FACE, data, h, w);
 			w++;
 		}
 		h++;
