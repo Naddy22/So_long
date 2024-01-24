@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 09:19:04 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/24 11:26:44 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/24 13:54:50 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,10 @@ static void	player_key(mlx_key_data_t keydata, void *param)
 		else if (keydata.key == MLX_KEY_D || keydata.key == MLX_KEY_RIGHT)
 			move(h, w + 1, data, PLAYER_RIGHT);
 		else if (keydata.key == MLX_KEY_ESCAPE )
+		{
+			ft_putstr_fd("Game exited successfully\n", 1);
 			ft_exit(data);
+		}
 	}
 }
 
@@ -102,7 +105,7 @@ void mlx(t_data *data)
 	mlx_key_hook(data->mlx_win, player_key, data);
 	// mlx_loop_hook(data->mlx_win, ft_exit, data);
 	mlx_loop(data->mlx_win);
-	// ft_exit(data);
+	ft_exit(data);
 	// mlx_terminate(data->mlx_win);
 }
 
