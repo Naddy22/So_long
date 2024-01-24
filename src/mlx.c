@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 09:19:04 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/24 17:15:35 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/24 17:33:34 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@
 // 3 voir pour key hook (player key pour bouger le perso en fonction de WASD
 // et fleche ou esc ou croix(voir pour une fonction qui exit tout))
 // message ou autre en fonction de ce qu'il se passe (pas tous les collectable quand on
-// va sur exit, return si mur, si 0 remettre sol et player à la place. si collectable
-// enlever image du collectable, remettre la case sur 0 et rajouter un collectable collecté)
+// va sur exit, return si mur,
+// si 0 remettre sol et player à la place. si collectable
+// enlever image du collectable,
+// remettre la case sur 0 et rajouter un collectable collecté)
 // remettre les données du player à jours et rajouter un mouvement fait puis l'imprimer
 // dans le terminal(voir pour fonction appart).
 // hook, puis loop
@@ -40,22 +42,25 @@ static void	move(int h, int w, t_data *data, const char *img)
 		return ;
 	else if (data->game.map[h][w] == '0')
 	{
-		put_image(FLOOR_MIDDLE_M, data, data->game.player_h, data->game.player_w);
+		put_image(FLOOR_MIDDLE_M, data, data->game.player_h,
+			data->game.player_w);
 		put_image(img, data, h, w);
 	}
-	else if (data->game.map[h][w] == 'E' && data->game.collected == data->game.collectable)
+	else if (data->game.map[h][w] == 'E'
+		&& data->game.collected == data->game.collectable)
 	{
 		ft_putstr_fd("Good job! You did it in ", 1);
 		ft_putnbr_fd(data->game.moves, 1);
 		ft_putstr_fd(" moves\n", 1);
 		ft_exit(data);
 	}
-	else if (data->game.map[h][w] == 'E' && data->game.collected != data->game.collectable)
+	else if (data->game.map[h][w] == 'E'
+		&& data->game.collected != data->game.collectable)
 	{
 		ft_putstr_fd("You have to take all the collectables\n", 1);
 		return ;
 	}
-	else if(data->game.map[h][w] == 'C')
+	else if (data->game.map[h][w] == 'C')
 		take_collectable(data, h, w, img);
 	data->game.player_h = h;
 	data->game.player_w = w;
@@ -65,9 +70,9 @@ static void	move(int h, int w, t_data *data, const char *img)
 
 static void	player_key(mlx_key_data_t keydata, void *param)
 {
-	t_data *data;
-	int h;
-	int w;
+	t_data	*data;
+	int		h;
+	int		w;
 
 	data = param;
 	h = data->game.player_h;
@@ -83,7 +88,7 @@ static void	player_key(mlx_key_data_t keydata, void *param)
 			move(h + 1, w, data, PLAYER_FACE);
 		else if (keydata.key == MLX_KEY_D || keydata.key == MLX_KEY_RIGHT)
 			move(h, w + 1, data, PLAYER_RIGHT);
-		else if (keydata.key == MLX_KEY_ESCAPE )
+		else if (keydata.key == MLX_KEY_ESCAPE)
 		{
 			ft_putstr_fd("Game exited successfully\n", 1);
 			ft_exit(data);
@@ -91,10 +96,10 @@ static void	player_key(mlx_key_data_t keydata, void *param)
 	}
 }
 
-void mlx(t_data *data)
+void	mlx(t_data *data)
 {
-	int win_h;
-	int win_w;
+	int	win_h;
+	int	win_w;
 
 	win_h = data->game.height * IMG_SIZE;
 	win_w = data->game.width * IMG_SIZE;
@@ -108,6 +113,3 @@ void mlx(t_data *data)
 	ft_exit(data);
 	// mlx_terminate(data->mlx_win);
 }
-
-// next step : voir pour faire player_key grace à https://github.com/codam-coding-college/MLX42/blob/master/docs/Hooks.md
-// https://github.com/wdelaros/so_long/blob/master/so_long.c

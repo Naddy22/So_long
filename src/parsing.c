@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 14:27:19 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/24 12:50:19 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/24 17:32:37 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	init(t_game *game)
 
 // lire map:
 // ouvrir fichier et recuperer le nombre de ligne avec get next line,
-//free et fermer fichier
+// free et fermer fichier
 void	get_height(char *file, t_data *data)
 {
 	int		fd;
@@ -68,7 +68,7 @@ void	get_height(char *file, t_data *data)
 	close(fd);
 }
 // malloc le nombre de ligne,
-//rouvrir le fichier pour strdup chaque ligne dans **map, fermer fichier
+// rouvrir le fichier pour strdup chaque ligne dans **map, fermer fichier
 void	get_map(char *file, t_data *data)
 {
 	int		fd;
@@ -98,7 +98,7 @@ void	get_map(char *file, t_data *data)
 }
 
 // parsing va verifier si bon fichier, appeler les fonction,
-//voir pour les erreur (peut être stocker
+// voir pour les erreur (peut être stocker
 // dans un int pour derriere renvoyer la bonne erreur)
 void	parsing(char *file, t_data *data)
 {

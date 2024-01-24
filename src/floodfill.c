@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 11:33:56 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/24 12:51:37 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/24 17:37:37 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ static void	floodfill(t_data *data, int h, int w)
 {
 	if (h < 0 || h >= data->game.height || w < 0 || w >= data->game.width)
 		return ;
-	else if (data->game.copy_map[h][w] == '1' || data->game.copy_map[h][w] == 'X')
+	else if (data->game.copy_map[h][w] == '1'
+		|| data->game.copy_map[h][w] == 'X')
 		return ;
 	else if (data->game.copy_map[h][w] == 'C')
 		data->game.collected++;
@@ -47,6 +48,7 @@ static void	floodfill(t_data *data, int h, int w)
 	floodfill(data, h - 1, w);
 	floodfill(data, h, w - 1);
 }
+
 int	path_is_valid(t_data *data)
 {
 	copy_map(data);

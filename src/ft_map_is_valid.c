@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 13:12:51 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/12 12:00:16 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/24 17:38:53 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,12 @@
 // Mettre map dans char** map check
 // forme rectangulaire check
 // mur tout autour sinon erreur check
-// 01 et C x1 minimum et PE juste x1 (mettre de côté la position et le nbr d’item à collecter)(erreur si doublon),
-//voir pour les vilains apres
+// 01 et C x1 minimum et PE juste x1 (mettre de côté la position et le nbr
+//d’item à collecter)(erreur si doublon),
+// voir pour les vilains apres
 // verifier si chemin valide (flood fill)
 // Si une erreur de configuration est détectée,
-//le programme doit quitter proprement
+// le programme doit quitter proprement
 // et retourner "Error\n" suivi d’un message d’erreur explicite de votre choix.
 
 static int	map_is_rectangle(t_data *data)
@@ -39,8 +40,10 @@ static int	map_is_rectangle(t_data *data)
 	data->game.width = (int)len;
 	return (TRUE);
 }
+
 // pour verifier les characteres:
-// faire une fonction pour verifier que tous les caracteres sont bien entre 01CEP et V plus tard
+// faire une fonction pour verifier que tous les caracteres sont bien entre
+//01CEP et V plus tard
 static int	check_chars(t_data *data)
 {
 	data->game.h = 0;
@@ -57,6 +60,7 @@ static int	check_chars(t_data *data)
 	}
 	return (SUCCESS);
 }
+
 // ensuite une pour voir si bien 1 seule E et P et minimum 1 C
 static int	check_max_char(t_data *data)
 {
