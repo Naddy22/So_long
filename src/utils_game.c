@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils_game.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/19 11:23:28 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/24 11:59:15 by namoisan         ###   ########.fr       */
+/*   Created: 2024/01/24 10:03:40 by namoisan          #+#    #+#             */
+/*   Updated: 2024/01/24 12:45:12 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-int	main(int argc, char **argv)
+void	ft_exit(t_data *data)
 {
-	t_data	data;
-	int		h;
+	// t_data *data;
 
-	h = 0;
-	if (argc == 2)
-	{
-		parsing(argv[1], &data);
-		mlx(&data);
-		// ft_exit(&data);
-	}
+	// data = param;
+
+	mlx_delete_texture(data->mlx_texture);
+	mlx_delete_image(data->mlx_win, data->mlx_img);
+	mlx_terminate(data->mlx_win);
+	ft_free_table(data->game.map);
+	exit(EXIT_SUCCESS);
+}
+
+void	show_moves(t_data *data)
+{
+	ft_putnbr_fd(data->game.moves, 1);
+	if (data->game.moves < 2)
+		ft_putstr_fd(" move\n", 1);
 	else
-		puterror("The number of arguments must be equal to 1");
-	// while (h < data.game.height)
-	// {
-	// 	printf("%s", data.game.map[h]);
-	// 	h++;
-	// }
-	return (0);
+		ft_putstr_fd(" moves\n", 1);
 }

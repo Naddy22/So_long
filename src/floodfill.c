@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 11:33:56 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/18 14:49:56 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/24 12:51:37 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ static void	copy_map(t_data *data)
 		ft_free_table(data->game.copy_map);
 		puterror("Memory allocation\n");
 	}
+	data->game.copy_map[data->game.height] = 0;
 	while (data->game.h < data->game.height)
 	{
 		data->game.copy_map[data->game.h] = ft_strdup(data->game.map[data->game.h]);
@@ -54,7 +55,10 @@ int	path_is_valid(t_data *data)
 	ft_free_table(data->game.copy_map);
 	if (data->game.collectable == data->game.collected
 		&& data->game.exit_counter == 1)
+	{
+		data->game.collected = 0;
 		return (TRUE);
+	}
 	else
 		return (FALSE);
 }

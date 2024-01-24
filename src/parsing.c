@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 14:27:19 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/19 10:49:55 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/24 12:50:19 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int	check_file_name(char *file)
 
 void	init(t_game *game)
 {
+	game->map = NULL;
+	game->copy_map = NULL;
 	game->width = 0;
 	game->height = 0;
 	game->player_h = 0;
@@ -78,6 +80,7 @@ void	get_map(char *file, t_data *data)
 	data->game.map = malloc((data->game.height + 1) * sizeof(char *));
 	if (data->game.map == NULL)
 		puterror_free("Memory allocation\n", data);
+	data->game.map[data->game.height] = 0;
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		puterror("File opening\n");

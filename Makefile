@@ -16,7 +16,7 @@ MK = mkdir -p
 RM = rm -rf
 BIN = bin
 SRC = main.c parsing.c ft_map_is_valid.c ft_wall_is_valid.c utils_error.c floodfill.c \
-mlx.c display_img.c
+mlx.c display_img.c utils_game.c
 SDIR = ./src/
 
 # -- COLORS -- #

@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 11:17:09 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/11 16:07:18 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/24 11:39:27 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	puterror_free(char *error, t_data *data)
 {
 	ft_free_table(data->game.map);
+	data->game.map = NULL;
 	ft_putstr_fd("Error\n", 2);
 	ft_putstr_fd(error, 2);
 	exit(EXIT_FAILURE);

@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 09:19:04 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/20 16:48:27 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/24 11:26:44 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,24 +26,44 @@
 // hook, puis loop
 
 // passer par chaque caractere 1 et 0, E si tous les C, C en supprimant C .
-void	move(int h, int w, t_data *data, const char *img)
+static void	take_collectable(t_data *data, int h, int w, const char *img)
+{
+	put_image(FLOOR_MIDDLE_M, data, data->game.player_h, data->game.player_w);
+	put_image(FLOOR_MIDDLE_M, data, h, w);
+	put_image(img, data, h, w);
+	data->game.map[h][w] = '0';
+	data->game.collected++;
+}
+static void	move(int h, int w, t_data *data, const char *img)
 {
 	if (data->game.map[h][w] == '1')
 		return ;
 	else if (data->game.map[h][w] == '0')
 	{
+		put_image(FLOOR_MIDDLE_M, data, data->game.player_h, data->game.player_w);
 		put_image(img, data, h, w);
 	}
-	if (data->game.map[h][w] == 'E' && data->game.collected == data->game.collectable)
+	else if (data->game.map[h][w] == 'E' && data->game.collected == data->game.collectable)
 	{
-
+		ft_putstr_fd("Good job! You did it in ", 1);
+		ft_putnbr_fd(data->game.moves, 1);
+		ft_putstr_fd(" moves\n", 1);
+		ft_exit(data);
 	}
+	else if (data->game.map[h][w] == 'E' && data->game.collected != data->game.collectable)
+	{
+		ft_putstr_fd("You have to take all the collectables\n", 1);
+		return ;
+	}
+	else if(data->game.map[h][w] == 'C')
+		take_collectable(data, h, w, img);
 	data->game.player_h = h;
 	data->game.player_w = w;
 	data->game.moves++;
+	show_moves(data);
 }
 
-void	player_key(mlx_key_data_t keydata, void *param)
+static void	player_key(mlx_key_data_t keydata, void *param)
 {
 	t_data *data;
 	int h;
@@ -52,29 +72,19 @@ void	player_key(mlx_key_data_t keydata, void *param)
 	data = param;
 	h = data->game.player_h;
 	w = data->game.player_w;
+	data->game.map[h][w] = '0';
 	if (keydata.action == MLX_PRESS || keydata.action == MLX_REPEAT)
 	{
 		if (keydata.key == MLX_KEY_W || keydata.key == MLX_KEY_UP)
-		{
-			put_image(FLOOR_MIDDLE_M, data, h, w);
 			move(h - 1, w, data, PLAYER_BACK);
-		}
 		else if (keydata.key == MLX_KEY_A || keydata.key == MLX_KEY_LEFT)
-		{
-			put_image(FLOOR_MIDDLE_M, data, h, w);
 			move(h, w - 1, data, PLAYER_LEFT);
-		}
 		else if (keydata.key == MLX_KEY_S || keydata.key == MLX_KEY_DOWN)
-		{
-			put_image(FLOOR_MIDDLE_M, data, h, w);
 			move(h + 1, w, data, PLAYER_FACE);
-		}
 		else if (keydata.key == MLX_KEY_D || keydata.key == MLX_KEY_RIGHT)
-		{
-			put_image(FLOOR_MIDDLE_M, data, h, w);
 			move(h, w + 1, data, PLAYER_RIGHT);
-		}
-		// else if (keydata.key == MLX_KEY_ESCAPE)
+		else if (keydata.key == MLX_KEY_ESCAPE )
+			ft_exit(data);
 	}
 }
 
@@ -92,8 +102,8 @@ void mlx(t_data *data)
 	mlx_key_hook(data->mlx_win, player_key, data);
 	// mlx_loop_hook(data->mlx_win, ft_exit, data);
 	mlx_loop(data->mlx_win);
-	// delete texture et image
-	mlx_terminate(data->mlx_win);
+	// ft_exit(data);
+	// mlx_terminate(data->mlx_win);
 }
 
 // next step : voir pour faire player_key grace à https://github.com/codam-coding-college/MLX42/blob/master/docs/Hooks.md
