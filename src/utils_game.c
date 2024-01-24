@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 10:03:40 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/24 13:58:09 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/24 16:28:08 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,9 @@ void	ft_exit(t_data *data)
 
 	// data = param;
 
-	mlx_delete_texture(data->mlx_texture);
+	ft_free_table(data->game.map);
 	mlx_delete_image(data->mlx_win, data->mlx_img);
 	mlx_terminate(data->mlx_win);
-	ft_free_table(data->game.map);
-	// printf("coucou");
 	exit(EXIT_SUCCESS);
 }
 

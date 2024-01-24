@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 11:23:28 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/24 11:59:15 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/24 14:38:16 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int	main(int argc, char **argv)
 	{
 		parsing(argv[1], &data);
 		mlx(&data);
+		// ft_free_table(data.game.map);
+		// exit(0);
 		// ft_exit(&data);
 	}
 	else

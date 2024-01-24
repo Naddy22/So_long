@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 09:48:51 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/20 16:29:29 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/24 15:03:22 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	put_image(const char *img, t_data *data, int h, int w)
 	if (data->mlx_texture == NULL)
 		puterror_free("PNG image not found", data);
 	data->mlx_img = mlx_texture_to_image(data->mlx_win, data->mlx_texture);
+	mlx_delete_texture(data->mlx_texture);
 	if (data->mlx_img == NULL)
 		puterror_free("PNG image not found", data);
 	mlx_image_to_window(data->mlx_win, data->mlx_img, w * IMG_SIZE, h * IMG_SIZE);
