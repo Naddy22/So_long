@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 09:19:04 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/24 17:33:34 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/25 11:31:02 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,15 +49,12 @@ static void	move(int h, int w, t_data *data, const char *img)
 	else if (data->game.map[h][w] == 'E'
 		&& data->game.collected == data->game.collectable)
 	{
-		ft_putstr_fd("Good job! You did it in ", 1);
-		ft_putnbr_fd(data->game.moves, 1);
-		ft_putstr_fd(" moves\n", 1);
-		ft_exit(data);
+		message(data, h, w, img);
 	}
 	else if (data->game.map[h][w] == 'E'
 		&& data->game.collected != data->game.collectable)
 	{
-		ft_putstr_fd("You have to take all the collectables\n", 1);
+		message(data, h, w, img);
 		return ;
 	}
 	else if (data->game.map[h][w] == 'C')

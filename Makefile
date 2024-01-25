@@ -1,4 +1,4 @@
-NAME = So_long
+NAME = so_long
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g #-fsanitize=address
 

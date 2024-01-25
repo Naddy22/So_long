@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 15:34:42 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/24 11:53:19 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/25 11:26:10 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,5 +115,6 @@ void	put_image(const char *img, t_data *data, int h, int w);
 //utils_game
 void	ft_exit(t_data *data);
 void	show_moves(t_data *data);
+void	message(t_data *data, int h, int w, const char *img);
 
 #endif
