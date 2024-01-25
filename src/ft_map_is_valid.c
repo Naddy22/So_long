@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 13:12:51 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/24 17:38:53 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/25 10:16:20 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ static int	map_is_rectangle(t_data *data)
 
 	data->game.h = 0;
 	len = ft_strlen(data->game.map[data->game.h]) - 1;
+	if (len > 53)
+		puterror_free("Width of the map is too long, max 53\n", data);
 	data->game.h++;
 	while (data->game.h < data->game.height)
 	{

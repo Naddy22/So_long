@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 14:27:19 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/24 17:32:37 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/25 10:16:13 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ void	get_height(char *file, t_data *data)
 		free(line);
 		line = NULL;
 	}
+	if (data->game.height > 27)
+		puterror_free("Height of the map is too long, max 27\n", data);
 	// printf("%d\n", data->game.height);
 	close(fd);
 }

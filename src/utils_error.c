@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 11:17:09 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/24 11:39:27 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/25 09:48:06 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ void	show_error(int error, t_data *data)
 	else if (error == INVALID_CHARS)
 		puterror_free("Chars is invalid\n", data);
 	else if (error == EXIT_ERROR)
-		puterror_free("There is more than 1 exit\n", data);
+		puterror_free("Invalid number of exit\n", data);
 	else if (error == PLAYER_ERROR)
-		puterror_free("There is more than 1 player\n", data);
+		puterror_free("Invalid number of player\n", data);
 	else if (error == COLLECTABLE_ERROR)
 		puterror_free("There is less than 1 collectabe\n", data);
 }
