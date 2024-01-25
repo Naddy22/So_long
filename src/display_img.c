@@ -6,19 +6,11 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 09:48:51 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/24 17:36:26 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/25 18:00:25 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
-
-// display image
-// 2 mlx load png dans mlx texture et mlx texture to image dams mlx image
-// verifier si pas null apres. mlx image to window
-// mlx delete image
-// 1 put background mettre le sol partout sur la map
-// 2 put object pour put img pour chaque lettre differente
-// (player en position P etc..)
 
 void	put_image(const char *img, t_data *data, int h, int w)
 {
@@ -33,6 +25,8 @@ void	put_image(const char *img, t_data *data, int h, int w)
 		* IMG_SIZE);
 }
 
+// put object pour put img pour chaque lettre differente
+// (player en position P etc..)
 static void	put_object(t_data *data)
 {
 	int	h;
@@ -51,7 +45,10 @@ static void	put_object(t_data *data)
 			if (data->game.map[h][w] == 'E')
 				put_image(EXIT, data, h, w);
 			if (data->game.map[h][w] == 'P')
+			{
 				put_image(PLAYER_FACE, data, h, w);
+				data->game.map[h][w] = '0';
+			}
 			w++;
 		}
 		h++;

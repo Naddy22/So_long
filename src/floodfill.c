@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 11:33:56 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/24 17:37:37 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/25 17:56:52 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ static void	copy_map(t_data *data)
 	data->game.copy_map[data->game.height] = 0;
 	while (data->game.h < data->game.height)
 	{
-		data->game.copy_map[data->game.h] = ft_strdup(data->game.map[data->game.h]);
+		data->game.copy_map[data->game.h] \
+		= ft_strdup(data->game.map[data->game.h]);
 		data->game.h++;
 	}
 	data->game.copy_map[data->game.h] = NULL;

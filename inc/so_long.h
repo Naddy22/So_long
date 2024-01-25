@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 15:34:42 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/25 11:26:10 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/25 17:52:58 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,28 +55,28 @@
 
 # define EXIT "image/exit/exit.png"
 
-#define PLAYER_FACE "image/player/playerface.png"
-#define PLAYER_BACK "image/player/playerback.png"
-#define PLAYER_RIGHT "image/player/playerright.png"
-#define PLAYER_LEFT "image/player/playerleft.png"
+# define PLAYER_FACE "image/player/playerface.png"
+# define PLAYER_BACK "image/player/playerback.png"
+# define PLAYER_RIGHT "image/player/playerright.png"
+# define PLAYER_LEFT "image/player/playerleft.png"
 
 // structure
 typedef struct s_game
 {
-	char	**map;
-	char	**copy_map;
-	int		width;
-	int		height;
-	int		player_w;
-	int		player_h;
-	int		moves;
-	int		collectable;
-	int		collected;
-	int		h;
-	int		w;
-	int		p;
-	int		exit_counter;
-}			t_game;
+	char			**map;
+	char			**copy_map;
+	int				width;
+	int				height;
+	int				player_w;
+	int				player_h;
+	int				moves;
+	int				collectable;
+	int				collected;
+	int				h;
+	int				w;
+	int				p;
+	int				exit_counter;
+}					t_game;
 
 typedef struct s_data
 {
@@ -87,34 +87,36 @@ typedef struct s_data
 }					t_data;
 
 // parsing
-int			check_file_name(char *file);
-void		get_height(char *file, t_data *data);
-void		get_map(char *file, t_data *data);
-void		parsing(char *file, t_data *data);
-void		init(t_game *game);
+int					check_file_name(char *file);
+void				get_height(char *file, t_data *data);
+void				get_map(char *file, t_data *data);
+void				parsing(char *file, t_data *data);
+void				init(t_game *game);
 
 // utils error
-void		puterror_free(char *error, t_data *data);
-void		puterror(char *error);
-void		show_error(int error, t_data *data);
+void				puterror_free(char *error, t_data *data);
+void				puterror(char *error);
+void				show_error(int error, t_data *data);
 
 // map et wall is valid
-int			ft_wall_is_valid(t_data *data);
-int			map_is_valid(t_data *data);
+int					ft_wall_is_valid(t_data *data);
+int					map_is_valid(t_data *data);
 
 // floodfill
-int			path_is_valid(t_data *data);
+int					path_is_valid(t_data *data);
 
-//mlx
-void	mlx(t_data *data);
+// mlx
+void				mlx(t_data *data);
 
-//display_img
-void	display_image(t_data *data);
-void	put_image(const char *img, t_data *data, int h, int w);
+// display_img
+void				display_image(t_data *data);
+void				put_image(const char *img, t_data *data, int h, int w);
 
-//utils_game
-void	ft_exit(t_data *data);
-void	show_moves(t_data *data);
-void	message(t_data *data, int h, int w, const char *img);
+// utils_game
+void				ft_exit(t_data *data);
+void				show_moves(t_data *data);
+void				message(t_data *data, int h, int w, const char *img);
+void				check_last_position(t_data *data, int h, int w,
+						const char *img);
 
 #endif

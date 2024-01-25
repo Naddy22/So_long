@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 10:26:08 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/24 12:44:37 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/25 17:55:12 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	ft_free_table(char **table)
 	{
 		while (table[i])
 		{
-		 	free(table[i]);
-		 	i++;
+			free(table[i]);
+			i++;
 		}
 		free(table);
 		table = NULL;

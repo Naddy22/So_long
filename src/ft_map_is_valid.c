@@ -6,23 +6,11 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 13:12:51 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/25 10:16:20 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/25 18:01:22 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
-
-// .ber check
-// Mettre map dans char** map check
-// forme rectangulaire check
-// mur tout autour sinon erreur check
-// 01 et C x1 minimum et PE juste x1 (mettre de côté la position et le nbr
-//d’item à collecter)(erreur si doublon),
-// voir pour les vilains apres
-// verifier si chemin valide (flood fill)
-// Si une erreur de configuration est détectée,
-// le programme doit quitter proprement
-// et retourner "Error\n" suivi d’un message d’erreur explicite de votre choix.
 
 static int	map_is_rectangle(t_data *data)
 {
@@ -43,9 +31,7 @@ static int	map_is_rectangle(t_data *data)
 	return (TRUE);
 }
 
-// pour verifier les characteres:
-// faire une fonction pour verifier que tous les caracteres sont bien entre
-//01CEP et V plus tard
+// verifier les characteres: 01CEP
 static int	check_chars(t_data *data)
 {
 	data->game.h = 0;

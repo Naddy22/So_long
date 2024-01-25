@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 14:27:19 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/25 10:16:13 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/25 18:02:30 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,6 @@ void	init(t_game *game)
 	game->p = 0;
 }
 
-// lire map:
-// ouvrir fichier et recuperer le nombre de ligne avec get next line,
-// free et fermer fichier
 void	get_height(char *file, t_data *data)
 {
 	int		fd;
@@ -66,11 +63,9 @@ void	get_height(char *file, t_data *data)
 	}
 	if (data->game.height > 27)
 		puterror_free("Height of the map is too long, max 27\n", data);
-	// printf("%d\n", data->game.height);
 	close(fd);
 }
-// malloc le nombre de ligne,
-// rouvrir le fichier pour strdup chaque ligne dans **map, fermer fichier
+
 void	get_map(char *file, t_data *data)
 {
 	int		fd;
