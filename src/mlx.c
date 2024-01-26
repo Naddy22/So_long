@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 09:19:04 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/25 17:58:12 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/01/26 12:09:28 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ static void	player_key(mlx_key_data_t keydata, void *param)
 	t_data	*data;
 	int		h;
 	int		w;
-	int		i;
 
 	data = param;
 	h = data->game.player_h;
