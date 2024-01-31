@@ -8,7 +8,7 @@ MY_LIBDIR = ./libft/
 # MLX42
 MLXDIR = ./MLX42
 HEADERS = -I ./include -I $(MLXDIR)/include
-LIBS = $(MLXDIR)/build/libmlx42.a -ldl -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/" -pthread -lm
+LIBS = $(MLXDIR)/build/libmlx42.a -ldl -lglfw -L"/Users/$(USER)/homebrew/opt/glfw/lib/" -pthread -lm #remplacer par l'emplacement de glfw au besoin
 LIBMLX = $(MLXDIR)/build/libmlx42.a
 
 DEPS = ./inc/so_long.h
