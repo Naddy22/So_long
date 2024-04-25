@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namoisan <namoisan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: namoisan <namoisan@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 11:23:28 by namoisan          #+#    #+#             */
-/*   Updated: 2024/01/25 17:50:22 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/02/21 12:58:25 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,7 @@
 int	main(int argc, char **argv)
 {
 	t_data	data;
-	int		h;
 
-	h = 0;
 	if (argc == 2)
 	{
 		parsing(argv[1], &data);
